@@ -12,7 +12,6 @@ namespace SauceDemoTest.Pages
             this.page = page;
         }
 
-        // Remove a product from the inventory page
        public async Task RemoveProduct(string productName)
 {
         var product = page.Locator(".cart_item")
@@ -24,20 +23,18 @@ namespace SauceDemoTest.Pages
     await product.Locator("button").ClickAsync();
 }
 
-        // Verify that the cart badge displays 1
+        // cart badge displays 1
         public async Task VerifyCartCountIsOne()
         {
             await Assertions.Expect(page.Locator(".shopping_cart_badge"))
                 .ToHaveTextAsync("1");
         }
 
-        // Open the cart
         public async Task OpenCart()
         {
             await page.Locator(".shopping_cart_link").ClickAsync();
         }
 
-        // Verify the remaining product
         public async Task VerifyRemainingProduct(string expectedProduct)
         {
             string actualProduct = await page
@@ -47,8 +44,6 @@ namespace SauceDemoTest.Pages
             Assert.That(actualProduct, Is.EqualTo(expectedProduct));
         }
 
-        // Click Checkout and verify the Information page
-        // Click Checkout and verify the Information page
 public async Task ClickCheckout()
 {
     await page.Locator("#checkout").ClickAsync();
